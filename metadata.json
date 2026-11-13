@@ -1,0 +1,6 @@
+{
+  "name": "Straive CX & Enterprise Operations",
+  "description": "Interactive keynote presentation for Straive Archetype 3: AI-Transformed Customer Experience and Enterprise Operations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

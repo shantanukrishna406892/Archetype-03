@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  --bg-ivory: #FAF8F3;
+  --bg-parchment: #EFECE3;
+  --surface: #FFFFFF;
+  --navy: #111B2B;
+  --navy-2: #182438;
+  --navy-3: #22314A;
+  --ink: #141A24;
+  --ink-2: #3A4250;
+  --ink-muted: #5A6270;
+  --border-light: #DCD6C8;
+  --border-dark: rgba(255, 255, 255, 0.14);
+  --signal: #F2551B;
+  --signal-hover: #D9440E;
+  --signal-text: #C8400D;
+  --gold: #9A8546;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --ease-expo: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-ivory);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+/* Publisher-style animated strikethrough & bar growth */
+@keyframes strikeGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.shift-strike {
+  position: relative;
+  display: inline-block;
+}
+
+.shift-strike::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  top: 54%;
+  height: 2px;
+  background: currentColor;
+  transform-origin: left;
+  animation: strikeGrow 0.9s var(--ease-expo) 0.25s both;
+}
+
+@keyframes panelFadeUp {
+  from {
+    opacity: 0.35;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel-enter {
+  animation: panelFadeUp 0.35s var(--ease-expo) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .shift-strike::after,
+  .panel-enter,
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
